@@ -1,14 +1,12 @@
-const DEFAULT_CONFIG = {
-  whatsappNumber: "",
-
-  // Textos fáciles de personalizar.
-  recipientName: "",
-  introQuestion: "¿Te gustaría salir conmigo?",
-};
-
 const CONFIG = {
-  ...DEFAULT_CONFIG,
-  ...(window.CONFIG || {}),
+  // Tu número con código de país, sin +, espacios ni guiones.
+  whatsappNumber: "50245738104",
+
+  // Su nombre o apodo.
+  recipientName: "Mafer",
+
+  // Pregunta inicial.
+  introQuestion: "¿Te gustaría salir conmigo?",
 };
 
 const state = {

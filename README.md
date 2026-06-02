@@ -1,48 +1,124 @@
 # Date Invite Page
 
-Mini web estática para pedir una cita con flujo interactivo, selección de fecha/hora, comida y botón final para abrir WhatsApp con el mensaje pregenerado.
+Mini web estática para invitar a alguien a una cita de una forma interactiva, cute y personalizada.
+
+La página incluye:
+
+- Pregunta inicial con botones "Sí" y "No".
+- Botón "No" que se escapa al intentar seleccionarlo.
+- Flujo para elegir fecha, parte del día, hora y comida.
+- Pantalla final con resumen del plan.
+- Botón para abrir WhatsApp con un mensaje pregenerado.
 
 ## Cómo personalizar
 
-Abre `script.js` y cambia:
+Abre `script.js` y cambia la configuración inicial:
 
 ```js
 const CONFIG = {
+  // Tu número con código de país, sin +, espacios ni guiones.
   whatsappNumber: "502XXXXXXXX",
+
+  // Su nombre o apodo.
   recipientName: "",
-  introQuestion: "Will you go on a date with me?",
+
+  // Pregunta inicial.
+  introQuestion: "¿Te gustaría salir conmigo?",
 };
 ```
 
+### Campos importantes
+
 - `whatsappNumber`: tu número con código de país, sin `+`, espacios ni guiones.
-  - Guatemala ejemplo: `50212345678`
-- `recipientName`: su nombre o apodo, opcional.
-- `introQuestion`: la pregunta inicial.
+  - Ejemplo Guatemala: `50212345678`
+- `recipientName`: su nombre o apodo. Es opcional.
+- `introQuestion`: la pregunta que aparece en la primera pantalla.
 
-También puedes editar los textos directamente en `index.html`.
+También puedes editar otros textos directamente en `index.html` o en las funciones de `script.js`.
 
-## Cómo probar
+## Cómo probar localmente
 
 Solo abre `index.html` en tu navegador.
 
-## Cómo publicar rápido
+También puedes usar una extensión como Live Server en VS Code si quieres probarlo como sitio local.
 
-Opciones sencillas:
+## Cómo publicar en GitHub Pages
 
-- Replit: crea un Repl HTML/CSS/JS y sube estos archivos.
-- Netlify: arrastra la carpeta completa a Netlify Drop.
-- Vercel: crea proyecto estático y sube la carpeta.
+Este proyecto funciona bien en GitHub Pages porque es una web estática con HTML, CSS y JavaScript puro.
 
-## Nota de WhatsApp
+Pasos básicos:
 
-El botón usa:
+1. Sube estos archivos a un repositorio de GitHub:
+   - `index.html`
+   - `styles.css`
+   - `script.js`
+   - `README.md`
+
+2. Entra al repositorio en GitHub.
+
+3. Ve a:
+
+```txt
+Settings → Pages
+```
+
+4. En `Build and deployment`, selecciona:
+
+```txt
+Deploy from a branch
+```
+
+5. Elige la rama principal, normalmente:
+
+```txt
+main
+```
+
+6. Selecciona la carpeta raíz:
+
+```txt
+/root
+```
+
+7. Guarda los cambios.
+
+Después de unos minutos, GitHub Pages te dará un link público.
+
+## Nota importante sobre WhatsApp
+
+El botón final usa este formato:
 
 ```js
 https://wa.me/TUNUMERO?text=MENSAJE
 ```
 
-En teléfono abre WhatsApp con el texto listo para enviar. En compu abre WhatsApp Web.
+En teléfono debería abrir WhatsApp con el texto listo para enviar.
+
+En computadora puede abrir WhatsApp Web.
+
+Recuerda que si publicas el proyecto en GitHub Pages, cualquier dato dentro de `script.js` será público. Para este proyecto no pasa nada grave, pero no pongas claves privadas, tokens ni contraseñas.
 
 ## Ajuste anti-Tab
 
-El botón "No" tiene `tabindex="-1"`, así que no aparece al navegar con Tab. Además, si por algún motivo recibe focus con teclado o mediante el navegador, se mueve y regresa el foco al botón "Yes".
+El botón "No" tiene:
+
+```html
+tabindex="-1"
+```
+
+Eso evita que aparezca al navegar con la tecla Tab.
+
+Además, si por algún motivo recibe focus con teclado o mediante el navegador, el botón se mueve y regresa el foco al botón "Sí".
+
+Esto mantiene la broma funcionando incluso si alguien intenta ganarle al sistema usando teclado.
+
+## Archivos del proyecto
+
+```txt
+index.html
+styles.css
+script.js
+README.md
+```
+
+No se necesita backend, base de datos ni instalación de dependencias.
