@@ -1,118 +1,103 @@
 # Date Invite Page
 
-Mini web estática para invitar a alguien a una cita de una forma interactiva, cute y personalizada.
+A small, static, romantic web page for asking someone out in a fun and personalized way.
 
-La página incluye:
+The page includes an interactive invitation flow, date/time selection, food choices, a playful “No” button that runs away, and a final WhatsApp button that opens a pre-filled message.
 
-- Pregunta inicial con botones "Sí" y "No".
-- Botón "No" que se escapa al intentar seleccionarlo.
-- Flujo para elegir fecha, parte del día, hora y comida.
-- Pantalla final con resumen del plan.
-- Botón para abrir WhatsApp con un mensaje pregenerado.
+> **Note:** The currently deployed version is in Spanish. The project can be easily translated by editing the text content in `index.html` and the labels inside `script.js`.
 
-## Cómo personalizar
 
-Abre `script.js` y cambia la configuración inicial:
+## Why this exists
+
+Normal people send a text.
+
+This project turns the invitation into a tiny personalized website — cute, simple, and very on-brand if you like building things instead of just texting.
+
+## Features
+
+- Spanish UI texts (the currently deployed version is in Spanish).
+- Fully static HTML, CSS, and JavaScript.
+- Spanish UI texts.
+- Responsive design for mobile.
+- Interactive first screen with a moving “No” button.
+- Date selection.
+- Morning/afternoon selection.
+- Time slots from morning to early evening.
+- Multiple food choices.
+- Final summary card.
+- WhatsApp link with a pre-filled message.
+- Copy-plan fallback button.
+- Confetti animation with plain JavaScript and CSS.
+- No backend, no database, no framework.
+
+## Project structure
+
+```txt
+date-invite-page/
+├── index.html
+├── styles.css
+├── script.js
+└── README.md
+```
+
+## How to personalize it
+
+Open `script.js` and edit the `CONFIG` object near the top:
 
 ```js
 const CONFIG = {
-  // Tu número con código de país, sin +, espacios ni guiones.
   whatsappNumber: "502XXXXXXXX",
-
-  // Su nombre o apodo.
-  recipientName: "",
-
-  // Pregunta inicial.
-  introQuestion: "¿Te gustaría salir conmigo?",
+  recipientName: "Her name or nickname",
+  introQuestion: "Will you go on a date with me??",
 };
 ```
 
-### Campos importantes
+### Config values
 
-- `whatsappNumber`: tu número con código de país, sin `+`, espacios ni guiones.
-  - Ejemplo Guatemala: `50212345678`
-- `recipientName`: su nombre o apodo. Es opcional.
-- `introQuestion`: la pregunta que aparece en la primera pantalla.
+- `whatsappNumber`: your WhatsApp number with country code, without `+`, spaces, or dashes.
+  - Guatemala example: `50212345678`
+- `recipientName`: her name or nickname.
+- `introQuestion`: the first question shown on the page.
 
-También puedes editar otros textos directamente en `index.html` o en las funciones de `script.js`.
+You can also personalize the visible text directly in `index.html`.
 
-## Cómo probar localmente
+## Make it feel unique before publishing
 
-Solo abre `index.html` en tu navegador.
+Before sending the link, make at least a few personal changes:
 
-También puedes usar una extensión como Live Server en VS Code si quieres probarlo como sitio local.
+1. Change the first question so it sounds like you.
+2. Use her name or nickname.
+3. Adjust the food options to places you would actually take her.
+4. Keep the time options realistic.
+5. Edit the final message so it sounds natural coming from you.
+6. Test the WhatsApp button on your phone.
+7. Open the page on mobile and make sure it feels smooth.
 
-## Cómo publicar en GitHub Pages
+This matters because the goal is not just to publish a cute template. The goal is to make the invitation feel personal.
 
-Este proyecto funciona bien en GitHub Pages porque es una web estática con HTML, CSS y JavaScript puro.
+## How to test locally
 
-Pasos básicos:
+Open `index.html` directly in your browser.
 
-1. Sube estos archivos a un repositorio de GitHub:
-   - `index.html`
-   - `styles.css`
-   - `script.js`
-   - `README.md`
-
-2. Entra al repositorio en GitHub.
-
-3. Ve a:
+If something does not update, hard refresh the browser:
 
 ```txt
-Settings → Pages
+Ctrl + Shift + R
 ```
 
-4. En `Build and deployment`, selecciona:
+On Mac:
 
 ```txt
-Deploy from a branch
+Cmd + Shift + R
 ```
 
-5. Elige la rama principal, normalmente:
+## Publishing with GitHub Pages
 
-```txt
-main
-```
+GitHub Pages can publish static files directly from a repository branch. For this project, the simplest setup is to publish from the `main` branch and the root folder.
 
-6. Selecciona la carpeta raíz:
+### Step 1: Make sure the project is ready
 
-```txt
-/root
-```
-
-7. Guarda los cambios.
-
-Después de unos minutos, GitHub Pages te dará un link público.
-
-## Nota importante sobre WhatsApp
-
-El botón final usa este formato:
-
-```js
-https://wa.me/TUNUMERO?text=MENSAJE
-```
-
-En teléfono debería abrir WhatsApp con el texto listo para enviar.
-
-En computadora puede abrir WhatsApp Web.
-
-Recuerda que si publicas el proyecto en GitHub Pages, cualquier dato dentro de `script.js` será público. Para este proyecto no pasa nada grave, pero no pongas claves privadas, tokens ni contraseñas.
-
-## Ajuste anti-Tab
-
-El botón "No" tiene:
-
-```html
-tabindex="-1"
-```
-
-Eso evita que aparezca al navegar con la tecla Tab.
-
-Además, si por algún motivo recibe focus con teclado o mediante el navegador, el botón se mueve y regresa el foco al botón "Sí".
-
-Esto mantiene la broma funcionando incluso si alguien intenta ganarle al sistema usando teclado.
-
-## Archivos del proyecto
+Your repository should include these files:
 
 ```txt
 index.html
@@ -121,4 +106,88 @@ script.js
 README.md
 ```
 
-No se necesita backend, base de datos ni instalación de dependencias.
+Do not ignore `script.js`, because the WhatsApp number and page config are inside that file.
+
+### Step 2: Push the files to GitHub
+
+```bash
+git add .
+git commit -m "Publish date invite page"
+git push
+```
+
+### Step 3: Enable GitHub Pages
+
+1. Open your repository on GitHub.
+2. Go to **Settings**.
+3. In the sidebar, go to **Pages**.
+4. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+5. Select the `main` branch.
+6. Select `/ (root)` as the folder.
+7. Click **Save**.
+
+### Step 4: Wait for the site URL
+
+After saving, GitHub will publish the site and show a URL like:
+
+```txt
+https://your-username.github.io/your-repository-name/
+```
+
+If the page does not appear immediately, wait a bit and refresh the GitHub Pages settings page.
+
+### Step 5: Test the final link
+
+Open the published link on your phone and check:
+
+- The page loads correctly.
+- The “No” button moves.
+- Date and time selection work.
+- Food cards can be selected.
+- The WhatsApp button opens WhatsApp with the message already written.
+- The final message does not feel too generic.
+
+## WhatsApp button
+
+The WhatsApp button uses this format:
+
+```txt
+https://wa.me/YOURNUMBER?text=MESSAGE
+```
+
+On mobile, it should open WhatsApp directly.
+
+On desktop, it usually opens WhatsApp Web.
+
+## About privacy
+
+This is a static website. Anything inside `index.html`, `styles.css`, or `script.js` can be seen by someone who opens the page source.
+
+Do not put passwords, API keys, private tokens, or anything sensitive in this project.
+
+Your WhatsApp number will be visible because the browser needs it to open the WhatsApp link.
+
+## Anti-Tab detail
+
+The “No” button has:
+
+```html
+tabindex="-1"
+```
+
+That keeps it out of normal keyboard navigation.
+
+If it somehow receives focus anyway, JavaScript moves the button and returns focus to the “Yes” button.
+
+Because yes, someone from computer science would absolutely try to beat the button with Tab.
+
+## Notes
+
+This project intentionally stays simple.
+
+No backend.  
+No database.  
+No accounts.  
+No overthinking.
+
+Just a small website to ask for a date in a memorable way.
