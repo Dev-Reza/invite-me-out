@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación a una cita</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="screen-intro" class="screen active">
+      <div class="card intro-card">
+        <div class="heart-envelope" aria-hidden="true">
+          <div class="envelope"></div>
+          <div class="heart">♥</div>
+        </div>
+
+        <p class="eyebrow">Pregunta pequeña pero importante</p>
+        <h1 id="intro-title">¿Te gustaría salir conmigo?</h1>
+
+        <div class="button-row first-choice">
+          <button id="yes-btn" class="btn btn-primary big">Si!</button>
+          <button id="no-btn" class="btn btn-soft small" type="button" tabindex="-1" aria-label="No, but it runs away">No</button>
+        </div>
+        <!--<p id="no-message" class="micro-copy hidden">error 404: esta respuesta no existe.</p>-->
+      </div>
+    </section>
+
+    <section id="screen-surprise" class="screen">
+      <div class="card celebration-card">
+        <div class="celebration-icon" aria-hidden="true">🎉</div>
+        <h2>¿En serio?, ¿DE VERDAD?. 😳</h2>
+        <p>Tenía todo un discurso preparado por si decías que no.</p>
+        <button class="btn btn-primary" data-next="screen-form-date">Bueno bueno... →</button>
+      </div>
+    </section>
+
+    <section id="screen-form-date" class="screen">
+      <div class="card form-card">
+        <div class="progress-wrap" aria-label="Progress">
+          <div class="progress-track"><div class="progress-fill" style="width: 33%"></div></div>
+          <div class="progress-hearts">
+            <span class="done">♥</span><span>♥</span><span>♥</span>
+          </div>
+        </div>
+
+        <p class="eyebrow">Paso uno</p>
+        <h2>Entonces... ¿cuándo estas libre? 👀</h2>
+
+        <label class="field-label" for="date-input">Elige una fecha</label>
+        <input id="date-input" class="input" type="date" />
+
+        <label class="field-label" for="time-input">¿A qué hora? <span aria-hidden="true">🫣</span></label>
+        <select id="time-input" class="input">
+          <option value="" selected disabled>Elige la hora</option>
+          <option>5:00 PM</option>
+          <option>6:00 PM</option>
+          <option>7:00 PM</option>
+          <option>8:00 PM</option>
+          <option>¡Sorpréndeme!</option>
+        </select>
+
+        <p id="date-error" class="error hidden">Primero necesito una fecha y una hora 😌</p>
+        <button id="date-next" class="btn btn-primary full">Okay, siguiente →</button>
+      </div>
+    </section>
+
+    <section id="screen-form-food" class="screen">
+      <div class="card form-card">
+        <div class="progress-wrap" aria-label="Progress">
+          <div class="progress-track"><div class="progress-fill" style="width: 66%"></div></div>
+          <div class="progress-hearts">
+            <span class="done">♥</span><span class="done">♥</span><span>♥</span>
+          </div>
+        </div>
+
+        <p class="eyebrow">Paso dos</p>
+        <h2>Ahora la pregunta difícil: ¿qué se te antoja? 😌</h2>
+        <p class="helper">Puedes elegir más de una opción. No estoy aquí para juzgar.</p>
+
+        <div id="food-grid" class="food-grid" aria-label="Food options">
+          <button class="food-card" data-food="Pizza"><span>🍕</span>Pizza</button>
+          <button class="food-card" data-food="Sushi"><span>🍣</span>Sushi</button>
+          <button class="food-card" data-food="Burgers"><span>🍔</span>Hamburguesas</button>
+          <button class="food-card" data-food="Pasta"><span>🍝</span>Pasta</button>
+          <button class="food-card" data-food="Tacos"><span>🌮</span>Tacos</button>
+          <button class="food-card" data-food="Ramen"><span>🍜</span>Ramen</button>
+        </div>
+
+        <p id="food-error" class="error hidden">Elige al menos una opción. Los datos son importantes.</p>
+        <button id="food-next" class="btn btn-primary full">¡Listo! →</button>
+      </div>
+    </section>
+
+    <section id="screen-final" class="screen">
+      <div class="card final-card">
+        <div class="progress-wrap" aria-label="Progress">
+          <div class="progress-track"><div class="progress-fill" style="width: 100%"></div></div>
+          <div class="progress-hearts">
+            <span class="done">♥</span><span class="done">♥</span><span class="done">♥</span>
+          </div>
+        </div>
+
+        <div class="letter-open" aria-hidden="true">💌</div>
+        <h2>¡Tenemos una cita! 🎉</h2>
+        <p id="final-line" class="final-line">Perfecto. Entonces será a las 7:00 PM. Yo seré el que estará intentando no verse nervioso. 😎</p>
+
+        <p class="ps">P.D. La gente normal manda un mensaje. Yo te hice una página web. Cosas normales.</p>
+
+        <div class="plan-card">
+          <div class="plan-item">
+            <div class="plan-icon">🗓️</div>
+            <div>
+              <p class="plan-label">Cuándo</p>
+              <p id="final-date" class="plan-main">Sábado, Mayo 16</p>
+              <p id="final-time" class="plan-sub">a las 7:00 PM</p>
+            </div>
+          </div>
+
+          <div class="plan-item">
+            <div class="plan-icon">🍽️</div>
+            <div>
+              <p class="plan-label">Food</p>
+              <p id="final-food" class="plan-main">Comida</p>
+            </div>
+          </div>
+        </div>
+
+        <button id="whatsapp-btn" class="btn btn-primary full">Abrir WhatsApp y confirmar</button>
+        <button id="copy-btn" class="btn btn-ghost full">Copiar plan</button>
+        <p id="copy-status" class="micro-copy hidden">Copiado. Ya no hay excusas 😌</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="confetti" aria-hidden="true"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
