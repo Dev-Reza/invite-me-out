@@ -11,7 +11,9 @@
   --border: rgba(227, 49, 130, 0.13);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -25,7 +27,11 @@ body {
   overflow-x: hidden;
 }
 
-button, input, select { font: inherit; }
+button,
+input,
+select {
+  font: inherit;
+}
 
 .app-shell {
   width: min(94vw, 560px);
@@ -42,7 +48,9 @@ button, input, select { font: inherit; }
   animation: softIn 360ms ease both;
 }
 
-.screen.active { display: block; }
+.screen.active {
+  display: block;
+}
 
 .card {
   position: relative;
@@ -67,17 +75,27 @@ button, input, select { font: inherit; }
   background: rgba(255, 79, 163, 0.1);
 }
 
-h1, h2 {
+h1,
+h2 {
   position: relative;
   margin: 8px 0 22px;
   line-height: 1.08;
   letter-spacing: -0.05em;
 }
 
-h1 { font-size: clamp(2.35rem, 11vw, 4.6rem); }
-h2 { font-size: clamp(2rem, 8vw, 3.6rem); }
+h1 {
+  font-size: clamp(2.35rem, 11vw, 4.6rem);
+}
 
-p { margin: 0; color: var(--muted); line-height: 1.55; }
+h2 {
+  font-size: clamp(2rem, 8vw, 3.6rem);
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
 
 .eyebrow {
   position: relative;
@@ -161,8 +179,13 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(1px) scale(0.98); }
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
 
 .btn-primary {
   color: white;
@@ -182,8 +205,14 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   padding: 11px 20px;
 }
 
-.btn-soft.small { font-size: 0.95rem; }
-.btn.full { width: 100%; margin-top: 18px; }
+.btn-soft.small {
+  font-size: 0.95rem;
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: 18px;
+}
 
 .btn-ghost {
   color: var(--pink-dark);
@@ -202,7 +231,9 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   font-size: 0.86rem;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 .celebration-icon,
 .letter-open {
@@ -248,10 +279,19 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   box-shadow: 0 8px 20px rgba(227, 49, 130, 0.14);
 }
 
-.progress-hearts .done { color: var(--pink); }
+.progress-hearts .done {
+  color: var(--pink);
+}
 
-.form-card { text-align: left; }
-.form-card h2, .form-card .eyebrow, .helper { text-align: center; }
+.form-card {
+  text-align: left;
+}
+
+.form-card h2,
+.form-card .eyebrow,
+.helper {
+  text-align: center;
+}
 
 .field-label {
   display: block;
@@ -304,8 +344,13 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   transition: transform 160ms ease, border 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
-.food-card span { font-size: 2.1rem; }
-.food-card:hover { transform: translateY(-2px); }
+.food-card span {
+  font-size: 2.1rem;
+}
+
+.food-card:hover {
+  transform: translateY(-2px);
+}
 
 .food-card.selected {
   border-color: rgba(227, 49, 130, 0.55);
@@ -313,7 +358,9 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
   box-shadow: 0 14px 30px rgba(227, 49, 130, 0.15);
 }
 
-.final-card { text-align: center; }
+.final-card {
+  text-align: center;
+}
 
 .final-line {
   color: var(--text);
@@ -395,28 +442,64 @@ p { margin: 0; color: var(--muted); line-height: 1.55; }
 }
 
 @keyframes softIn {
-  from { opacity: 0; transform: translateY(14px) scale(0.985); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes floatHeart {
-  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-8deg); }
-  50% { transform: translateX(-50%) translateY(-8px) rotate(5deg); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-8px) rotate(5deg);
+  }
 }
 
 @keyframes pop {
-  from { opacity: 0; transform: scale(0.5) rotate(-8deg); }
-  to { opacity: 1; transform: scale(1) rotate(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
 }
 
 @keyframes confettiFall {
-  0% { transform: translateY(-20px) rotate(0); }
-  100% { transform: translateY(105vh) rotate(720deg); }
+  0% {
+    transform: translateY(-20px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+  }
 }
 
 @media (max-width: 420px) {
-  .card { border-radius: 28px; }
-  .button-row { gap: 10px; }
-  .btn-primary.big { padding: 18px 32px; }
-  .food-grid { grid-template-columns: 1fr; }
+  .card {
+    border-radius: 28px;
+  }
+
+  .button-row {
+    gap: 10px;
+  }
+
+  .btn-primary.big {
+    padding: 18px 32px;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
 }
