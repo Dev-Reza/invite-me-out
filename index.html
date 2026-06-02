@@ -55,15 +55,25 @@
         <label class="field-label" for="date-input">Elige una fecha</label>
         <input id="date-input" class="input" type="date" />
 
-        <label class="field-label" for="time-input">¿A qué hora? <span aria-hidden="true">🫣</span></label>
-        <select id="time-input" class="input">
-          <option value="" selected disabled>Elige la hora</option>
-          <option>5:00 PM</option>
-          <option>6:00 PM</option>
-          <option>7:00 PM</option>
-          <option>8:00 PM</option>
-          <option>¡Sorpréndeme!</option>
-        </select>
+        <label class="field-label">¿Qué parte del día te queda mejor?</label>
+
+        <div class="time-period-row" aria-label="Parte del día">
+          <button class="time-period-card" type="button" data-period="morning">
+            <span>☀️</span>
+            Mañana
+          </button>
+
+          <button class="time-period-card" type="button" data-period="afternoon">
+            <span>🌤️</span>
+            Tarde
+          </button>
+        </div>
+
+        <label id="time-options-label" class="field-label hidden">
+          ¿A qué hora? <span aria-hidden="true">🫣</span>
+        </label>
+
+        <div id="time-options" class="time-options hidden" aria-label="Opciones de hora"></div>
 
         <p id="date-error" class="error hidden">Primero necesito una fecha y una hora 😌</p>
         <button id="date-next" class="btn btn-primary full">Ok, siguiente →</button>

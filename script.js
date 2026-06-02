@@ -13,8 +13,23 @@ const CONFIG = {
 
 const state = {
   date: "",
+  period: "",
   time: "",
   foods: [],
+};
+
+const TIME_SLOTS = {
+  morning: ["9:00 AM", "10:00 AM", "11:00 AM"],
+  afternoon: [
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+  ],
 };
 
 const screens = document.querySelectorAll(".screen");
@@ -23,7 +38,9 @@ const yesBtn = document.getElementById("yes-btn");
 const noMessage = document.getElementById("no-message");
 const introTitle = document.getElementById("intro-title");
 const dateInput = document.getElementById("date-input");
-const timeInput = document.getElementById("time-input");
+const timeOptions = document.getElementById("time-options");
+const timeOptionsLabel = document.getElementById("time-options-label");
+const timePeriodCards = document.querySelectorAll(".time-period-card");
 const dateError = document.getElementById("date-error");
 const foodError = document.getElementById("food-error");
 const finalLine = document.getElementById("final-line");
@@ -81,6 +98,22 @@ function protectNoButtonFromKeyboard(event) {
   yesBtn.focus({ preventScroll: true });
 }
 
+timePeriodCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const period = card.dataset.period;
+
+    timePeriodCards.forEach((item) => {
+      item.classList.remove("selected");
+    });
+
+    card.classList.add("selected");
+    state.period = period;
+
+    renderTimeOptions(period);
+    dateError.classList.add("hidden");
+  });
+});
+
 function formatDateForCard(dateValue) {
   const [year, month, day] = dateValue.split("-").map(Number);
   const date = new Date(year, month - 1, day);
@@ -90,6 +123,36 @@ function formatDateForCard(dateValue) {
     day: "numeric",
     month: "long",
   });
+}
+
+function renderTimeOptions(period) {
+  const slots = TIME_SLOTS[period] || [];
+
+  timeOptions.innerHTML = "";
+  state.time = "";
+
+  slots.forEach((slot) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "time-card";
+    button.textContent = slot;
+
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".time-card").forEach((card) => {
+        card.classList.remove("selected");
+      });
+
+      button.classList.add("selected");
+      state.time = slot;
+      dateError.classList.add("hidden");
+    });
+
+    timeOptions.appendChild(button);
+  });
+
+  timeOptionsLabel.classList.remove("hidden");
+  timeOptions.classList.remove("hidden");
 }
 
 function buildPlanText() {
@@ -122,7 +185,8 @@ async function copyPlan() {
 }
 
 function openWhatsApp() {
-  const text = encodeURIComponent(buildPlanText());
+  const message = buildPlanText();
+  const text = encodeURIComponent(message);
   const phone = CONFIG.whatsappNumber.replace(/\D/g, "");
 
   if (!phone) {
@@ -132,7 +196,6 @@ function openWhatsApp() {
     return;
   }
 
-  // wa.me funciona bien en móvil y también en desktop con WhatsApp Web.
   window.location.href = `https://wa.me/${phone}?text=${text}`;
 }
 
@@ -197,15 +260,14 @@ document.querySelectorAll("[data-next]").forEach((button) => {
 
 document.getElementById("date-next").addEventListener("click", () => {
   const date = dateInput.value;
-  const time = timeInput.value;
 
-  if (!date || !time) {
+  if (!date || !state.period || !state.time) {
+    dateError.textContent = "Primero necesito fecha, parte del día y hora 😌";
     dateError.classList.remove("hidden");
     return;
   }
 
   state.date = date;
-  state.time = time;
   dateError.classList.add("hidden");
   showScreen("screen-form-food");
 });

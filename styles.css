@@ -441,6 +441,69 @@ p {
   animation: confettiFall 1.9s linear forwards;
 }
 
+.time-period-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.time-period-card {
+  min-height: 96px;
+  border: 1px solid rgba(227, 49, 130, 0.15);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 850;
+  display: grid;
+  gap: 6px;
+  place-items: center;
+  transition: transform 160ms ease, border 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.time-period-card span {
+  font-size: 2rem;
+}
+
+.time-period-card:hover {
+  transform: translateY(-2px);
+}
+
+.time-period-card.selected {
+  border-color: rgba(227, 49, 130, 0.55);
+  background: rgba(255, 222, 238, 0.92);
+  box-shadow: 0 14px 30px rgba(227, 49, 130, 0.15);
+}
+
+.time-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.time-card {
+  border: 1px solid rgba(227, 49, 130, 0.15);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+  padding: 14px 10px;
+  transition: transform 160ms ease, border 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.time-card:hover {
+  transform: translateY(-2px);
+}
+
+.time-card.selected {
+  border-color: rgba(227, 49, 130, 0.55);
+  background: rgba(255, 222, 238, 0.92);
+  box-shadow: 0 12px 26px rgba(227, 49, 130, 0.14);
+}
+
 @keyframes softIn {
   from {
     opacity: 0;
@@ -501,5 +564,9 @@ p {
 
   .food-grid {
     grid-template-columns: 1fr;
+  }
+
+  .time-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
