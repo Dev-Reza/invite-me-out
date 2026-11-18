@@ -1,9 +1,9 @@
 const CONFIG = {
   // Tu número con código de país, sin +, espacios ni guiones.
-  whatsappNumber: "50245738104",
+  whatsappNumber: "+502 xxxx-xxxx",
 
   // Su nombre o apodo.
-  recipientName: "Mafer",
+  recipientName: "Ella",
 
   // Pregunta inicial.
   introQuestion: "¿Te gustaría salir conmigo?",
